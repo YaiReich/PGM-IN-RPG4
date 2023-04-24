@@ -1,0 +1,61 @@
+ FMT FX FFilename++IPEASF.....L.....A.Device+.Keywords+++++++++++++++++++++++++ 
+        *************** Beginning of data ************************************* 
+0001.01 FSTENTRY   CF   E             WORKSTN                                   
+0002.00 FSTUDENT   UF A E           K DISK                                      
+0003.00 C*                                                                      
+0004.00 C     *IN03         DOWEQ     *OFF                                      
+0004.01 C                   MOVEL(P)  *BLANKS       STID                        
+0004.02 C                   MOVEL(P)  *BLANKS       LNAME                       
+0004.03 C                   MOVEL(P)  *BLANKS       NAME                        
+0004.04 C                   MOVEL(P)  *BLANKS       AGE                         
+0005.00 C                   EXFMT     MAIN                                      
+0006.00 C                   SETON                                        08     
+0007.00 C   02              EXSR      UPDATE1                                   
+0008.00 C   04              EXSR      DELETE1                                   
+0009.00 C   06              EXSR      ADD1                                      
+0010.00 C   03              EXSR      EXIT1                                     
+0011.00 C   08              EXSR      DISPLAY1                                  
+0012.00 C                   ENDDO  
+0013.00 C                   SETON                                        LR    
+0014.00 C*                                                                     
+0015.00 C     DISPLAY1      BEGSR                                              
+0016.00 C                   SETOFF                                       3132  
+0017.00 C     STID          CHAIN     RSTUDENT                           9999  
+0018.00 C   99              SETON                                        32    
+0019.00 C  N99              SETON                                        3031  
+0020.00 C                   EXFMT     MAIN1                                    
+0021.00 C                   ENDSR
+0022.00 C*                                                                      
+0023.00 C     ADD1          BEGSR                                               
+0025.00 C                   SETOFF                                       303132 
+0026.00 C     STID          CHAIN     RSTUDENT                           9999   
+0026.01 C   99              SETON                                        31     
+0026.02 C  N99              SETON                                        32     
+0027.00 C                   EXFMT     MAIN1                                     
+0027.01 C                   Z-ADD     STID          ID                          
+0028.00 C   99              WRITE     RSTUDENT                                  
+0029.00 C                   ENDSR                                               
+0030.00 C*                                                                      
+0031.00 C     UPDATE1       BEGSR                                               
+0032.01 C                   SETOFF                                       303132 
+0033.00 C     STID          CHAIN     RSTUDENT                           9999   
+0033.01 C   99              SETON                                        32     
+0033.02 C  N99              SETON                                        31     
+0034.00 C                   EXFMT     MAIN1                                     
+0035.00 C  N99              UPDATE    RSTUDENT                                  
+0036.00 C                   ENDSR                                               
+0037.00 C*                                                                      
+0038.00 C     DELETE1       BEGSR                                               
+0039.00 C                   SETOFF                                       313208 
+0039.01 C                   SETON                                        30     
+0040.00 C     STID          CHAIN     RSTUDENT                           9999   
+0040.01 C   99              SETON                                        32     
+0040.02 C  N99              SETON                                        31     
+0041.00 C                   EXFMT     MAIN1                                     
+0042.00 C  N99              DELETE    RSTUDENT                                  
+0043.00 C                   ENDSR                                               
+0044.00 C*                                                                      
+0045.00 C     EXIT1         BEGSR                                               
+0046.00 C                   SETOFF                                       0808   
+0047.00 C                   ENDSR                                               
+        ****************** End of data **************************************** 
